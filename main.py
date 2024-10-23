@@ -1,10 +1,5 @@
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
-import imageio
-import matplotlib.patches as patches
-import matplotlib.cbook as cbook
-from matplotlib.pyplot import figure
 import os
 from io import StringIO
 
@@ -83,7 +78,6 @@ def crearImagen(Interno, fecha, dobson, ecc):
     ax.axis()
     ##https://stackoverflow.com/questions/41453902/is-it-possible-to-patch-an-image-in-matplotlib
     from matplotlib.offsetbox import OffsetImage, AnnotationBbox
-    from urllib import request
     from skimage import io
     ##############################################################################3
     ax.annotate('Ozonosondeo Ushuaia ' + fecha.strftime('%d-%m-%Y'),
@@ -175,7 +169,7 @@ def crearImagen(Interno, fecha, dobson, ecc):
     nameOut = 'Perfil_' + fecha.strftime('%Y-%m-%d') + '.jpg'
     fig.savefig(nameOut, dpi=500)
     ###ADD LOGOS
-    import agregarlogo as logo
+    from Requerimientos import agregarlogo as logo
 
     logo.crearGeneral(fig, ax, nameOut)
     plt.show()

@@ -46,9 +46,9 @@ def crearGeneral(fig, axes, filename='General'):
     fig.savefig(filename, dpi=500, bbox_inches=extent.expanded(0.9, 0.95))
 
     im1 = Image.open(filename)
-    im2 = Image.open('VAG_Logo.jpg')
-    im3 = Image.open('SMN_Logo.jpg')
-    im4 = Image.open('TDF_Logo.jpg')
+    im2 = Image.open('Requerimientos/VAG_Logo.jpg')
+    im3 = Image.open('Requerimientos/SMN_Logo.jpg')
+    im4 = Image.open('Requerimientos/TDF_Logo.jpg')
     get_concat_tile_resize([[im1],
                             [ im2, im3, im4]]).save(filename)
 
