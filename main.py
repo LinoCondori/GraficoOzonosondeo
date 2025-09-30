@@ -55,6 +55,23 @@ def abrirArchivoUS(fecha):
             ecc = lineas[i+2].replace('  ', ' ').split(' ')[10]
     return dobson, ecc
 
+def abrirArchivoWD(fecha):
+    wd = fecha.strftime('ush_woudc_%Y%m%d.csv')
+    with open(wd) as wd_aux:
+        lineas = wd_aux.readlines()
+    for i in range(0, len(lineas)):
+        if '#OZONE_REFERENCE' in ( lineas[i]):
+            for j in lineas[i+2].replace('  ', ' ').split(' '):
+                print(j)
+            dobson = lineas[i+2].replace('  ', '').split(',')[4]
+
+        if '#FLIGHT_SUMMARY' in (lineas[i]):
+            for j in lineas[i + 2].replace('  ', ' ').split(' '):
+                print(j)
+            ecc = lineas[i+2].replace('  ', '').split(',')[2]
+    return dobson, ecc
+
+
 """
 
 aux = Interno.columns.tolist()[1:]
@@ -183,7 +200,7 @@ if __name__ == '__main__':
     #recorrer cada dia y generar archivo.
     for archivo in archivos:
         df, Fecha = leerArchivoInterno(archivo)
-        Dobson, ECC = abrirArchivoUS(Fecha)
+        Dobson, ECC = abrirArchivoWD(Fecha)
         crearImagen(df, Fecha, Dobson, ECC)
 
 
